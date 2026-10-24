@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>oneBot · Open in Epic Games</title>
+<style>[hidden]{display:none!important}html{color-scheme:dark;font:16px system-ui;background:#111214;color:#f2f3f5}body{max-width:480px;margin:15vh auto;padding:24px}main{border:1px solid #33363b;border-radius:14px;padding:28px;background:#18191c}h1{font-size:24px;margin-top:0}p{color:#b5bac1;line-height:1.6}a{display:inline-block;color:#9ed3ff;margin:8px 14px 8px 0}#open{background:#e5e7eb;color:#111214;border-radius:8px;padding:12px 18px;text-decoration:none;font-weight:650}small{color:#949ba4}</style>
+<main><h1>Open in Epic Games</h1><p id="status">Checking this game link…</p><a id="open" hidden>Open Epic Games Launcher</a><a id="browser" hidden>Open in browser ↗</a><p><small>You’ll need the Epic Games Launcher installed. Your browser may ask before opening it.</small></p></main>
+<script>
+const slug=new URLSearchParams(location.search).get('game');
+if(slug&&/^[a-zA-Z0-9-]{1,180}$/.test(slug)){
+ const app='com.epicgames.launcher://store/p/'+slug;
+ document.getElementById('status').textContent='Continue to this game in the Epic Games Launcher, or open its store page in your browser.';
+ const open=document.getElementById('open');open.href=app;open.hidden=false;
+ const browser=document.getElementById('browser');browser.href='https://store.epicgames.com/p/'+slug;browser.hidden=false;browser.rel='noreferrer';
+}else{document.getElementById('status').textContent='This game link is incomplete. Open the original giveaway announcement and try again.';}
+</script></html>
